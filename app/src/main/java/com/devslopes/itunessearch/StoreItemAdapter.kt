@@ -2,20 +2,22 @@ package com.devslopes.itunessearch
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.devslopes.itunessearch.databinding.ItemStoreBinding
+import com.squareup.picasso.Picasso
 
-class StoreItemAdapter : ListAdapter<String, StoreItemAdapter.StoreItemViewHolder>(diff) {
+class StoreItemAdapter : ListAdapter<ItunesMovieServer.Result, StoreItemAdapter.StoreItemViewHolder>(diff) {
 
     companion object {
-        private val diff = object : DiffUtil.ItemCallback<String>() {
-            override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+        private val diff = object : DiffUtil.ItemCallback<ItunesMovieServer.Result>() {
+            override fun areItemsTheSame(oldItem: ItunesMovieServer.Result, newItem: ItunesMovieServer.Result): Boolean {
                 return areContentsTheSame(oldItem, newItem)
             }
 
-            override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+            override fun areContentsTheSame(oldItem: ItunesMovieServer.Result, newItem: ItunesMovieServer.Result): Boolean {
                 return oldItem == newItem
             }
 
@@ -30,14 +32,20 @@ class StoreItemAdapter : ListAdapter<String, StoreItemAdapter.StoreItemViewHolde
 
     override fun onBindViewHolder(holder: StoreItemViewHolder, position: Int) {
         holder.onBind(getItem(position))
+
+        var item = getItem(position)
+        var icon = item.artworkUrl100
+        Picasso.get().load(icon).into(holder.itemView
+            .findViewById<ImageView>(R.id.image))
     }
 
     class StoreItemViewHolder(
         private val binding: ItemStoreBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(title: String) {
-            binding.title.text = title
+        fun onBind(title: ItunesMovieServer.Result) {
+            binding.title.text = title.trackName
+
         }
     }
 }
