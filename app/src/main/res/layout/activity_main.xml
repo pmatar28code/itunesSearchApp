@@ -18,29 +18,33 @@
         android:id="@+id/filter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/search"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/search">
+
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Movie"/>
+            android:text="Movie" />
+
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/music"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Music"/>
+            android:text="Music" />
+
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/software"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Software"/>
+            android:text="Software" />
+
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/eBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="eBook"/>
+            android:text="eBook" />
     </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -60,5 +64,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/filter" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:imeOptions="actionSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter"
+        app:srcCompat="@drawable/ic_baseline_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
