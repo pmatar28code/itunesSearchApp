@@ -156,9 +156,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="867" y="490" key="#com.intellij.ide.util.MemberChooser" timestamp="1616459787101">
-      <screen x="0" y="25" width="2560" height="1415" />
+    <state x="488" y="313" key="#com.intellij.ide.util.MemberChooser" timestamp="1616537289861">
+      <screen x="0" y="25" width="1440" height="875" />
     </state>
+    <state x="488" y="313" key="#com.intellij.ide.util.MemberChooser/0.25.1440.875@0.25.1440.875" timestamp="1616537289861" />
     <state x="867" y="490" key="#com.intellij.ide.util.MemberChooser/0.25.2560.1415@0.25.2560.1415" timestamp="1616459787101" />
     <state width="1396" height="186" key="GridCell.Tab.0.bottom" timestamp="1616446867469">
       <screen x="0" y="25" width="2560" height="1415" />
@@ -192,5 +193,9 @@
       <screen x="0" y="25" width="2560" height="1415" />
     </state>
     <state width="1398" height="228" key="GridCell.Tab.1.right/0.25.2560.1415@0.25.2560.1415" timestamp="1616278987623" />
+    <state x="384" y="214" width="670" height="676" key="search.everywhere.popup" timestamp="1616533716419">
+      <screen x="0" y="25" width="1440" height="875" />
+    </state>
+    <state x="384" y="214" width="670" height="676" key="search.everywhere.popup/0.25.1440.875@0.25.1440.875" timestamp="1616533716419" />
   </component>
 </project>

@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devslopes.itunessearch.databinding.ActivityMainBinding
 import com.devslopes.itunessearch.repositories.ItunesRepository
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var selection = radioSelected(binding)
 
         val storeItemAdapter = StoreItemAdapter()
        // ItunesRepository.callGetMovie(this,"movie","toy story")
@@ -52,7 +55,8 @@ class MainActivity : AppCompatActivity() {
             fetchMatchingItems(binding,storeItemAdapter)
             Handler().postDelayed(
                     {
-                        storeItemAdapter.notifyDataSetChanged()                    },
+                        storeItemAdapter.notifyDataSetChanged()
+                    },
                     2000 // value in milliseconds
             )
            // storeItemAdapter.notifyDataSetChanged()
@@ -72,10 +76,36 @@ class MainActivity : AppCompatActivity() {
             }
 
             search.setOnSearchClickListener {
+                 search.isSubmitButtonEnabled = true
+                search.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+
+                        fetchMatchingItems(binding, storeItemAdapter)
+                        Handler().postDelayed(
+                                {
+                                    storeItemAdapter.notifyDataSetChanged()
+                                },
+                                2000 // value in milliseconds
+                        )
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        search.isSubmitButtonEnabled = true
+                        return false
+                    }
+
+                })
+
                // ItunesRepository.moviesServerMutable.clear()
                 //storeItemAdapter.notifyDataSetChanged()
-                //fetchMatchingItems(binding, storeItemAdapter)
-
+               // fetchMatchingItems(binding, storeItemAdapter)
+                Handler().postDelayed(
+                        {
+                            storeItemAdapter.notifyDataSetChanged()
+                        },
+                        3000 // value in milliseconds
+                )
                // storeItemAdapter.submitList(ItunesRepository.moviesTitles)
                 //storeItemAdapter.notifyDataSetChanged()
                 //ItunesRepository.moviesServerString.clear()
@@ -86,18 +116,30 @@ class MainActivity : AppCompatActivity() {
             }
 
             filter.setOnCheckedChangeListener { _, _ ->
-               // fetchMatchingItems(binding, storeItemAdapter)
-
+                //search.setOnSearchClickListener {  }
+                //fetchMatchingItems(binding, storeItemAdapter)
+                //radioSelected(binding)
                // storeItemAdapter.submitList(ItunesRepository.moviesServerString)
-               // storeItemAdapter.notifyDataSetChanged()
+                //storeItemAdapter.notifyDataSetChanged()
 
             }
         }
 
     }
+    fun radioSelected(binding:ActivityMainBinding):String{
+        var selection =""
+         selection = when (binding.filter.checkedRadioButtonId) {
+            R.id.movie -> "movie"
+            R.id.music -> "music"
+            R.id.software -> "software"
+            R.id.eBook -> "eBook"
+            else -> ""
+        }
+        return selection
+    }
 
     private fun fetchMatchingItems(binding: ActivityMainBinding, storeItemAdapter: StoreItemAdapter) {
-        val searchTerm = binding.search.query.toString()
+        var searchTerm = binding.search.query.toString()
         val mediaType = when (binding.filter.checkedRadioButtonId) {
             R.id.movie -> "movie"
             R.id.music -> "music"
@@ -114,9 +156,9 @@ class MainActivity : AppCompatActivity() {
                 "movie" -> {ItunesRepository.callGetMovie(this,"movie",searchTerm);storeItemAdapter.submitList(ItunesRepository.moviesServerMutable);storeItemAdapter.notifyDataSetChanged()}
 
             }
-
-
-
+        }else {
+            ItunesRepository.moviesServerMutable.clear()
+            storeItemAdapter.notifyDataSetChanged()
         }
     }
 }
