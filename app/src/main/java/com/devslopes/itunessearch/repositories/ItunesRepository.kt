@@ -33,7 +33,7 @@ object ItunesRepository {
                     moviesServer = response.body()?.results
 
                     for(item in moviesServer!!){
-                        moviesServerString.add(item.trackName)
+                        moviesServerString.add(item.trackName!!)
                     }
 
 
@@ -45,7 +45,7 @@ object ItunesRepository {
                     }
                     for(item in response.body()!!.results){
                       //  var trackName = item.trackName
-                        moviesTitles?.add(item.trackName)
+                        moviesTitles?.add(item.trackName!!)
                     }
                    // movieObj = response.body()?.toItunesMovieLocal()
 
@@ -59,33 +59,33 @@ object ItunesRepository {
 
     private fun ItunesMovieServer.toItunesMovieLocal(): ItunesMovieLocal.Result {
         return ItunesMovieLocal.Result(
-            artistName = results[0].artistName,
-            artworkUrl100 = results[0].artworkUrl100,
-            artworkUrl30 = results[0].artworkUrl30,
-            artworkUrl60 = results[0].artworkUrl60,
-            collectionExplicitness = results[0].collectionExplicitness,
+            artistName = results[0]?.artistName?:"",
+            artworkUrl100 = results[0]?.artworkUrl100?:"",
+            artworkUrl30 = results[0]?.artworkUrl30?:"",
+            artworkUrl60 = results[0]?.artworkUrl60?:"",
+            collectionExplicitness = results[0]?.collectionExplicitness?:"",
             collectionHdPrice = results[0]?.collectionHdPrice ?: 0.00,
             collectionPrice = results[0]?.collectionPrice ?: 0.00,
-            contentAdvisoryRating = results[0].contentAdvisoryRating,
-            country= results[0].country,
-            currency= results[0].currency,
-            kind = results[0].kind,
-            longDescription = results[0].longDescription,
+            contentAdvisoryRating = results[0]?.contentAdvisoryRating?:"",
+            country= results[0]?.country?:"",
+            currency= results[0]?.currency?:"",
+            kind = results[0]?.kind?:"",
+            longDescription = results[0]?.longDescription?:"",
             previewUrl= results[0]?.previewUrl ?: "",
-            primaryGenreName = results[0].primaryGenreName,
-           releaseDate= results[0].releaseDate,
-            trackCensoredName = results[0].trackCensoredName,
-             trackExplicitness = results[0].trackExplicitness,
+            primaryGenreName = results[0]?.primaryGenreName?:"",
+           releaseDate= results[0]?.releaseDate?:"",
+            trackCensoredName = results[0]?.trackCensoredName?:"",
+             trackExplicitness = results[0]?.trackExplicitness?:"",
          trackHdPrice = results[0]?.trackHdPrice ?: 0.00,
 
-         trackId = results[0].trackId,
-         trackName = results[0].trackName,
+         trackId = results[0]?.trackId?:0,
+         trackName = results[0]?.trackName?:"",
 
          trackPrice = results[0]?.trackPrice ?: 0.00,
 
          trackTimeMillis = results[0]?.trackTimeMillis ?: 0,
-         trackViewUrl = results[0].trackViewUrl,
-         wrapperType = results[0].wrapperType
+         trackViewUrl = results[0]?.trackViewUrl?:"",
+         wrapperType = results[0]?.wrapperType?:""
         )
     }
 

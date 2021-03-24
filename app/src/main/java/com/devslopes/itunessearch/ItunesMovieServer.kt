@@ -13,83 +13,96 @@ data class ItunesMovieServer(
 ) {
     @JsonClass(generateAdapter = true)
     data class Result(
-       // @Json(name = "artistId")
-       // val artistId: Int,
+        @Json(name = "artistId")//
+        val artistId: Int?,
         @Json(name = "artistName")
-        val artistName: String,
-       // @Json(name = "artistViewUrl")
-      //  val artistViewUrl: String,
+        val artistName: String?,
+        @Json(name = "artistViewUrl")
+        val artistViewUrl: String?,//
         @Json(name = "artworkUrl100")
-        val artworkUrl100: String,
+        val artworkUrl100: String?,
         @Json(name = "artworkUrl30")
-        val artworkUrl30: String,
+        val artworkUrl30: String?,
         @Json(name = "artworkUrl60")
-        val artworkUrl60: String,
-        //@Json(name = "collectionArtistId")
-       // val collectionArtistId: Int,
-       // @Json(name = "collectionArtistViewUrl")
-       // val collectionArtistViewUrl: String,
-       // @Json(name = "collectionCensoredName")
-       // val collectionCensoredName: String,
+        val artworkUrl60: String?,
+        @Json(name = "collectionArtistId")//
+        val collectionArtistId: Int?,
+        @Json(name = "collectionArtistViewUrl")//
+        val collectionArtistViewUrl: String?,
+        @Json(name = "collectionCensoredName")//
+        val collectionCensoredName: String?,
         @Json(name = "collectionExplicitness")
-        val collectionExplicitness: String,
+        val collectionExplicitness: String?,
         @Json(name = "collectionHdPrice")
         val collectionHdPrice: Double?,
-      // @Json(name = "collectionId")
-        //val collectionId: Int,
-        //@Json(name = "collectionName")
-       // val collectionName: String,
+        @Json(name = "collectionId")//
+        val collectionId: Int?,
+        @Json(name = "collectionName")//
+        val collectionName: String?,
         @Json(name = "collectionPrice")
         val collectionPrice: Double?,
-        //@Json(name = "collectionViewUrl")
-        //val collectionViewUrl: String,
+        @Json(name = "collectionViewUrl")//
+        val collectionViewUrl: String?,
         @Json(name = "contentAdvisoryRating")
-        val contentAdvisoryRating: String,
+        val contentAdvisoryRating: String?,
         @Json(name = "country")
-        val country: String,
+        val country: String?,
         @Json(name = "currency")
-        val currency: String,
-        //@Json(name = "discCount")
-       // val discCount: Int,
-        //@Json(name = "discNumber")
-        //val discNumber: Int,
-       // @Json(name = "hasITunesExtras")
-       // val hasITunesExtras: Boolean,
+        val currency: String?,
+        @Json(name = "discCount")//
+        val discCount: Int?,
+        @Json(name = "discNumber")//
+        val discNumber: Int?,
+        @Json(name = "hasITunesExtras")//
+        val hasITunesExtras: Boolean?,
         @Json(name = "kind")
-        val kind: String,
+        val kind: String?,
         @Json(name = "longDescription")
-        val longDescription: String,
+        val longDescription: String?,
         @Json(name = "previewUrl")
         val previewUrl: String?,
         @Json(name = "primaryGenreName")
-        val primaryGenreName: String,
+        val primaryGenreName: String?,
         @Json(name = "releaseDate")
-        val releaseDate: String,
+        val releaseDate: String?,
         @Json(name = "trackCensoredName")
-        val trackCensoredName: String,
-       // @Json(name = "trackCount")
-       // val trackCount: Int,
+        val trackCensoredName: String?,
+        @Json(name = "trackCount")//
+        val trackCount: Int?,
         @Json(name = "trackExplicitness")
-        val trackExplicitness: String,
+        val trackExplicitness: String?,
         @Json(name = "trackHdPrice")
         val trackHdPrice: Double?,
-       // @Json(name = "trackHdRentalPrice")
-       // val trackHdRentalPrice: Double,
+        @Json(name = "trackHdRentalPrice")//
+        val trackHdRentalPrice: Double?,
         @Json(name = "trackId")
-        val trackId: Int,
+        val trackId: Int?,
         @Json(name = "trackName")
-        val trackName: String,
-      //  @Json(name = "trackNumber")
-       // val trackNumber: Int,
+        val trackName: String?,
+        @Json(name = "trackNumber")//
+        val trackNumber: Int?,
         @Json(name = "trackPrice")
         val trackPrice: Double?,
-       // @Json(name = "trackRentalPrice")
-       // val trackRentalPrice: Double,
+        @Json(name = "trackRentalPrice")//
+        val trackRentalPrice: Double?,
         @Json(name = "trackTimeMillis")
         val trackTimeMillis: Int?,
         @Json(name = "trackViewUrl")
-        val trackViewUrl: String,
+        val trackViewUrl: String?,
         @Json(name = "wrapperType")
-        val wrapperType: String
+        val wrapperType: String?,
+    //from here whats missing of for ebooks
+        @Json(name = "averageUserRating")
+        val averageUserRating: Double?,
+        @Json(name = "fileSizeBytes")
+        val fileSizeBytes: Int?,
+        @Json(name = "genreIds")
+        val genreIds: List<String>?,
+        @Json(name = "genres")
+        val genres: List<String>?,
+        @Json(name = "userRatingCount")
+        val userRatingCount: Int?
+
+
     )
 }

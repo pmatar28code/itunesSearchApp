@@ -3,7 +3,6 @@ package com.devslopes.itunessearch
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -18,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var selection = radioSelected(binding)
+        //var selection = radioSelected(binding)
 
         val storeItemAdapter = StoreItemAdapter()
        // ItunesRepository.callGetMovie(this,"movie","toy story")
@@ -31,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             },
             1000 // value in milliseconds
         )
-
+        /*
         binding.search.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 binding.test.text = "again"
@@ -47,8 +46,8 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
 
-        })
-
+        }) */
+        /*
         binding.floatingActionButton2.setOnClickListener {
             val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
@@ -66,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             binding.search.setOnSearchClickListener{}
 
         }
-
+*/
 
         binding.apply {
             results.apply {
@@ -87,6 +86,8 @@ class MainActivity : AppCompatActivity() {
                                 },
                                 2000 // value in milliseconds
                         )
+                        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
                         return true
                     }
 
@@ -126,6 +127,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    /*
     fun radioSelected(binding:ActivityMainBinding):String{
         var selection =""
          selection = when (binding.filter.checkedRadioButtonId) {
@@ -137,6 +139,7 @@ class MainActivity : AppCompatActivity() {
         }
         return selection
     }
+     */
 
     private fun fetchMatchingItems(binding: ActivityMainBinding, storeItemAdapter: StoreItemAdapter) {
         var searchTerm = binding.search.query.toString()
@@ -150,10 +153,15 @@ class MainActivity : AppCompatActivity() {
 
         if (searchTerm.isNotEmpty()) {
             // perform search!!!
+            val size: Int = ItunesRepository.moviesServerMutable.size
             ItunesRepository.moviesServerMutable.clear()
             when(mediaType){
 
                 "movie" -> {ItunesRepository.callGetMovie(this,"movie",searchTerm);storeItemAdapter.submitList(ItunesRepository.moviesServerMutable);storeItemAdapter.notifyDataSetChanged()}
+                "music" -> {ItunesRepository.callGetMovie(this,"music",searchTerm);storeItemAdapter.submitList(ItunesRepository.moviesServerMutable);storeItemAdapter.notifyDataSetChanged()}
+                "software" -> {ItunesRepository.callGetMovie(this,"software",searchTerm);storeItemAdapter.submitList(ItunesRepository.moviesServerMutable);storeItemAdapter.notifyDataSetChanged()}
+                "eBook" -> {ItunesRepository.callGetMovie(this,"ebook",searchTerm);storeItemAdapter.submitList(ItunesRepository.moviesServerMutable);storeItemAdapter.notifyDataSetChanged()}
+                "else" -> {binding.filter.clearCheck();ItunesRepository.moviesServerMutable.clear();storeItemAdapter.submitList(ItunesRepository.moviesServerMutable);storeItemAdapter.notifyItemRangeRemoved(0, size);storeItemAdapter.notifyDataSetChanged()}
 
             }
         }else {

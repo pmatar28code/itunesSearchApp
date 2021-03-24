@@ -1,0 +1,15 @@
+
+*Im not parsing the server response to objects, im just
+making a list of objects from the server.
+
+*changed the adapter parameter for list from String to ItunesServerMovies
+
+*search Button in search View , appears when user select or writes something
+in searchView, its not to much visible but i think its better than a FAB
+
+*cant get to clear list update adapter/recycler with searchview/search button,
+with FAB it did work. cant set search term to null, and empty string does not
+work. i cleared the list im passing to the adapter and notify data changed ,
+it does not work
+
+
