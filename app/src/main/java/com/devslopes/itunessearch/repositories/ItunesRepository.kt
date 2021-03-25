@@ -10,14 +10,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 object ItunesRepository {
-    var trackNameLocal = ""
-    var movieObj:ItunesMovieLocal.Result ?=null
-    var movies: MutableList<ItunesMovieLocal.Result> ?= null
-    var moviesTitles: MutableList<String> ?= null
+   // var trackNameLocal = ""
+   // var movieObj:ItunesMovieLocal.Result ?=null
+   // var movies: MutableList<ItunesMovieLocal.Result> ?= null
+   // var moviesTitles: MutableList<String> ?= null
     var moviesServer: List<ItunesMovieServer.Result>?=null
     var moviesServerMutable = mutableListOf<ItunesMovieServer.Result>()
     var movieObjServer:ItunesMovieServer.Result?=null
-    var moviesServerString = mutableListOf<String>()
+   // var moviesServerString = mutableListOf<String>()
 
     fun callGetMovie( context:Context,media:String,term:String) {
         ItunesMovieClient.ItunesMovieServiceT.getMovie(media,term).
@@ -32,9 +32,9 @@ object ItunesRepository {
                     //Toast.makeText(context,"onResponse ${response.body()?.results?.get(0)?.trackName.toString()}",Toast.LENGTH_LONG).show()
                     moviesServer = response.body()?.results
 
-                    for(item in moviesServer!!){
-                        moviesServerString.add(item.trackName!!)
-                    }
+                   // for(item in moviesServer!!){
+                    //    moviesServerString.add(item.trackName!!)
+                   // }
 
 
                     if(moviesServer !=null) {
@@ -43,10 +43,10 @@ object ItunesRepository {
                             moviesServerMutable?.add(item!!)
                         }
                     }
-                    for(item in response.body()!!.results){
+                    //for(item in response.body()!!.results){
                       //  var trackName = item.trackName
-                        moviesTitles?.add(item.trackName!!)
-                    }
+                     //   moviesTitles?.add(item.trackName!!)
+                    //}
                    // movieObj = response.body()?.toItunesMovieLocal()
 
                     //trackNameLocal =  response.body()?.results?.get(0)?.trackName.toString()
@@ -88,5 +88,4 @@ object ItunesRepository {
          wrapperType = results[0]?.wrapperType?:""
         )
     }
-
 }

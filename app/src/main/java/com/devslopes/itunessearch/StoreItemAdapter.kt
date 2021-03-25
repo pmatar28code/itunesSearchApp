@@ -20,7 +20,6 @@ class StoreItemAdapter : ListAdapter<ItunesMovieServer.Result, StoreItemAdapter.
             override fun areContentsTheSame(oldItem: ItunesMovieServer.Result, newItem: ItunesMovieServer.Result): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
 
